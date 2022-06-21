@@ -5,14 +5,15 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import{promisify} from 'util'
 import { resolveSoa } from 'dns';
+import dotenv from 'dotenv'
+dotenv.config()
 
 
 const pool = new Pool({
-    user: 'hartiel',
-    host: 'localhost',
-    database: 'lokkeroom',
-    password: 'caravane',
-    port: 5432
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false   
+    }
 })
 
 const Port = 3000;

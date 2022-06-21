@@ -1,0 +1,48 @@
+body{
+    width: 1080px;
+    height: 720px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contact{
+    width: 1000px;
+    height: 150px;
+    border: solid 1px black;
+}
+
+h1{
+    text-align: center;
+    border-bottom: solid 1px black;
+}
+
+.convesation{
+    width: 1000px;
+    height: 600px;
+    border: solid 1px black;
+}
+
+h2{
+    text-align: center;
+    font-size: 25px;
+    border-bottom: solid 1px black;
+}
+
+
+.input{
+    width: 1000px;
+    height: 80px;
+    border: solid 1px black;
+    display: flex;
+
+}
+
+.mess{
+    font-size: 25px;
+}
+.ecrie{
+    width: 800px;
+    height: 60px;
+    margin: 5px;
+}
+
