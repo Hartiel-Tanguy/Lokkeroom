@@ -16,7 +16,7 @@ const pool = new Pool({
     }
 })
 
-const Port = 3000;
+const Port = process.env.PORT || 3000
 
 const server = express()
 
