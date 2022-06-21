@@ -82,22 +82,22 @@ server.post('/api/login', async (req, res) => {
 })
 
 
-server.use(async(req, res, next) => {
-    if (!req.headers.authorization)
-        return res.status(401).send({ error: 'Pas dauthorization'})
+//server.use(async(req, res, next) => {
+  //  if (!req.headers.authorization)
+    //    return res.status(401).send({ error: 'Pas dauthorization'})
     
-    try{
-        const decoded = await verify(req.headers.authorization.split(' ')[1], process.env.JWT_SECRET)
+    //try{
+      //  const decoded = await verify(req.headers.authorization.split(' ')[1], process.env.JWT_SECRET)
 
-    if (decoded !== undefined){
-        req.user = decoded
-        return next()
-    }
-    } catch(err){
-        console.log(err)
-    }
-    return res.status(403).send({ error: 'token invalide'})
-})
+    //if (decoded !== undefined){
+      //  req.user = decoded
+        //return next()
+    //}
+    //} catch(err){
+     //   console.log(err)
+   // }
+    //return res.status(403).send({ error: 'token invalide'})
+//})
 
 
 
