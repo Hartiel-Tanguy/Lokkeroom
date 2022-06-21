@@ -1,3 +1,4 @@
-//route pour aller sur la page d'accueil si login ok
-function 
+//route pour aller sur la page d'accueil si nom et mot de passe sont bon
+fuction
+
 
