@@ -24,7 +24,7 @@ const verify = promisify(jwt.verify)
 
 server.use(express.json())
 
-server.post('api/register', async (req, res) => {
+server.post('/api/register', async (req, res) => {
     const {email,nickname,password} = req.body
 
     if(!email || !nickname || !password)
@@ -124,7 +124,7 @@ server.get('/api/lobby/:id/messages', async (req, res) => {
     return res.send(q.rows)
     
 })
-server.get('/api/lobby/:id/messages/:message_id', async (req, res) => {
+server.get('/api/lobby/:id/messages/:id', async (req, res) => {
     const {lobby_id} = req.params
     const {message_id} = req.params
     const q = await pool.query('SELECT text from public.messages WHERE lobby_id = $1 AND id = $2',[lobby_id, message_id])
@@ -149,7 +149,7 @@ server.post('/api/lobby/:id/add-user', async (req, res) => {
         return res.status(500).send({ error: 'server erreur' })
       }
   })
-server.delete('/api/lobby/:lobby_id/remove-user', async (req, res) => {
+server.delete('/api/lobby/:id/remove-user', async (req, res) => {
     const {user_id} = req.body
     const {lobby_id} = req.params
 
