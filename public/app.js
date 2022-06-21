@@ -10,6 +10,7 @@ function login() {
         alert("Wrong username and/or password");
     }
 }
+//redirection vers une autre page htlm apres avoir crée un nouveau compte
 
 
 
