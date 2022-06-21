@@ -25,6 +25,10 @@ const verify = promisify(jwt.verify)
 
 server.use(express.json())
 
+server.get('/', (req, res) => {
+  res.send('Hello World!')
+  })
+
 server.post('/api/register', async (req, res) => {
     const {email,nickname,password} = req.body
 
@@ -78,29 +82,27 @@ server.post('/api/login', async (req, res) => {
 })
 
 
-//server.use(async(req, res, next) => {
-  //  if (!req.headers.authorization)
-    //    return res.status(401).send({ error: 'Pas dauthorization'})
-    //
-    //try{
-      //  const decoded = await verify(req.headers.authorization.split(' ')[1], process.env.JWT_SECRET)
+server.use(async(req, res, next) => {
+    if (!req.headers.authorization)
+        return res.status(401).send({ error: 'Pas dauthorization'})
+    
+    try{
+        const decoded = await verify(req.headers.authorization.split(' ')[1], process.env.JWT_SECRET)
 
-    //if (decoded !== undefined){
-      //  req.user = decoded
-        //return next()
-    //}
-    //} catch(err){
-      //  console.log(err)
-   // }
-    //return res.status(403).send({ error: 'token invalide'})
-//})
-
-
+    if (decoded !== undefined){
+        req.user = decoded
+        return next()
+    }
+    } catch(err){
+        console.log(err)
+    }
+    return res.status(403).send({ error: 'token invalide'})
+})
 
 
-server.get('/', (req, res) => {
-    res.send('Hello World!')
-    })
+
+
+
 server.get('/api/users', async (req, res) => {
     const users = await pool.query(`SELECT * FROM users`);
     res.send(users.rows)
